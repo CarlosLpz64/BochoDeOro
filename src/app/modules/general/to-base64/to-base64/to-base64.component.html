@@ -1,0 +1,55 @@
+<div class="main-title">
+  <h1>Convertir imagen a Base 64</h1>
+</div>
+<br>
+<div class="center-content">
+  <a routerLink="/generales/base64/en/imagen"> Ir a Convertidor de Imagen a Base64</a>
+</div>
+<br />
+<h2>Imagen a convertir</h2>
+
+<div class="file-input">
+    <input type="file" type="file" (change)="seleccionarImagen($event)" accept="image/*">
+  </div>
+
+  <br>
+
+<div class="center-content" style="background-color: whitesmoke;">
+    <img style="max-height: 30vh;" [src]="base64" *ngIf="base64" />
+</div>
+
+<h2>Texto convertido</h2>
+<mat-form-field class="text-input-large" appearance="fill">
+  <mat-label>Resultado</mat-label>
+  <textarea id="result" matInput rows="4" disabled="true">{{ base64 }}</textarea>
+</mat-form-field>
+
+<div class="center-content">
+  <button
+    [disabled]="base64 === ''"
+    mat-raised-button
+    (click)="confirmCopy()"
+    class="button-med"
+    [cdkCopyToClipboard]="base64"
+  >
+    Copiar resultado
+  </button>
+</div>
+<br />
+<div class="center-content" style="flex-direction: column">
+  <h2>Si te gustó, por favor recomienda este sitio web :D</h2>
+  <mat-icon svgIcon="heart" style="color: red"></mat-icon>
+  <br />
+</div>
+<!-- Anuncio Inferior -->
+<ins
+  class="adsbygoogle"
+  style="display: block"
+  data-ad-client="ca-pub-6064670444327082"
+  data-ad-slot="5701673846"
+  data-ad-format="auto"
+  data-full-width-responsive="true"
+></ins>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>

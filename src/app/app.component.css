@@ -1,0 +1,28 @@
+@import '../styles.css';
+
+body {
+    background-color: red;
+}
+
+.mybg { 
+    position: absolute;
+    z-index: -9999999;
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
+}
+
+mat-drawer-container {
+    height: 100%;
+    min-height: 100vh;
+}
+
+mat-drawer {
+    width: 260px;
+    border: none;
+}
+
+.content-wrap {
+    height: calc(100vh - 65px); /*Screen - toolbar*/
+    overflow: auto;
+}

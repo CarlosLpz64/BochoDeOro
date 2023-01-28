@@ -1,0 +1,23 @@
+<mat-tab-group dynamicHeight animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="end">
+
+    <mat-tab *ngIf="htmlContent" [label]="htmlTitle">
+        <div class="tab-menu">
+            <mat-icon (click)="confirmCopy()" matTooltip="Copiar" [cdkCopyToClipboard]="htmlContent" svgIcon="clipboard-text-multiple-outline"></mat-icon>
+        </div>
+        <p class="multiline">{{htmlContent}}</p>
+    </mat-tab>
+
+    <mat-tab *ngIf="cssContent" [label]="cssTitle">
+        <div class="tab-menu">
+            <mat-icon (click)="confirmCopy()" matTooltip="Copiar" [cdkCopyToClipboard]="cssContent" svgIcon="clipboard-text-multiple-outline"></mat-icon>
+        </div>
+        <p class="multiline">{{cssContent}}</p>
+    </mat-tab>
+
+    <mat-tab *ngIf="tsContent" [label]="tsTitle">
+        <div class="tab-menu">
+            <mat-icon (click)="confirmCopy()" matTooltip="Copiar" [cdkCopyToClipboard]="tsContent" svgIcon="clipboard-text-multiple-outline"></mat-icon>
+        </div>
+        <p class="multiline">{{tsContent}}</p>
+    </mat-tab>
+</mat-tab-group>

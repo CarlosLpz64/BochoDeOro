@@ -1,0 +1,30 @@
+<div class="main-title">
+    <h1> Convertir texto a mayúsculas</h1>
+  </div>
+  <br>
+  <h2> Texto a convertir </h2>
+  <mat-form-field class="text-input-large" appearance="fill">
+    <mat-label>Inserte el texto a convertir</mat-label>
+    <textarea id="inputVal" matInput rows="10" [(ngModel)]="value"></textarea>
+  </mat-form-field>
+
+  <h2> Texto convertido </h2>
+  <mat-form-field class="text-input-large" appearance="fill">
+    <mat-label>Resultado</mat-label>
+    <textarea id="result" matInput rows="10" disabled="true"> {{ value | toUpper}}</textarea>
+  </mat-form-field>
+
+  <div class="center-content">
+    <button 
+    mat-raised-button 
+    (click)="confirmCopy()"
+    class="button-med" 
+    [cdkCopyToClipboard]="value | toUpper"
+    > Copiar resultado</button>
+  </div>
+  <br>
+  <div class="center-content" style="flex-direction: column;">
+    <h2> Si te gustó, por favor recomienda este sitio web :D</h2>
+    <mat-icon svgIcon="heart" style="color: red;"></mat-icon>
+    <br>
+  </div>

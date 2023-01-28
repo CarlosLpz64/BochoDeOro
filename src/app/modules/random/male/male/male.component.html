@@ -1,0 +1,34 @@
+<div class="main-title">
+    <h1> Obtener un nombre masculino al azar </h1>
+  </div>
+  <br>
+  <h2> Generar nombre </h2>
+  <div class="center-content">
+    <button 
+    mat-raised-button 
+    class="button-med" 
+    (click)="doAction()"
+    > Generar </button>
+  </div>
+
+  <h2> Resultado </h2>
+  <mat-form-field class="text-input-large big-result" appearance="fill">
+    <mat-label>Resultado</mat-label>
+    <textarea id="result" matInput rows="2" disabled="true">{{result}}</textarea>
+  </mat-form-field>
+
+  <div class="center-content">
+    <button 
+    [disabled]="result=== ''"
+    mat-raised-button 
+    (click)="confirmCopy()"
+    class="button-med" 
+    [cdkCopyToClipboard]="result"
+    > Copiar resultado</button>
+  </div>
+  <br>
+  <div class="center-content" style="flex-direction: column;">
+    <h2> Si te gustó, por favor recomienda este sitio web :D</h2>
+    <mat-icon svgIcon="heart" style="color: red;"></mat-icon>
+    <br>
+  </div>

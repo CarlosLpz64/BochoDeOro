@@ -1,0 +1,33 @@
+<div class="center sidenav-top" style="height: 80px;" routerLink="home">
+  <img src="/assets/images/bochoside.png" alt="Logo">
+</div>
+<div class="sidenav-container">
+  <mat-divider></mat-divider>
+
+  <div class="sidenav-navegation">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let category of menuItems">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div>
+              <mat-icon [svgIcon]="category.icon"></mat-icon>
+            </div>
+            {{ category.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div
+          class="item-sidenav"
+          mat-button
+          [routerLink]="view.href"
+          (click)="CloseSidebar()"
+          *ngFor="let view of category.views"
+        >
+          <mat-icon [svgIcon]="view.icon"></mat-icon>
+          <a>
+            {{ view.name }}
+          </a>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

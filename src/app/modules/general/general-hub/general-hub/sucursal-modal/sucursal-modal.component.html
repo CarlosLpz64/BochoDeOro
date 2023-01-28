@@ -1,0 +1,35 @@
+<div class="center-horizontal"><h1>{{data.isEdit ? "Actualizar sucursal" : "Crear sucursal"}}</h1></div>
+<div class="content-container">
+
+    <div class="input-container">
+        <p>Nombre</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem' : ''" placeholder="Nombre*">
+    </div>
+    <div class="input-container">
+        <p>Dirección</p>
+        <textarea type="text" [value]="data.isEdit ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt' : ''" placeholder="Dirección*"></textarea>
+    </div>
+    <div class="input-container">
+        <p>Código postal</p>
+        <input type="text" [value]="data.isEdit ? '12345' : ''" placeholder="Código postal*">
+    </div>
+    <div class="input-container">
+        <p>Número exterior</p>
+        <input type="text" [value]="data.isEdit ? '678' : ''" placeholder="Número exterior*">
+    </div>
+    <div class="input-container">
+        <p>Ciudad</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem Ipsum' : ''" placeholder="Ciudad*">
+    </div>
+    <div class="input-container">
+        <p>Estado</p>
+        <input type="text" [value]="data.isEdit ? 'Ipsum Lorem' : ''" placeholder="Estado*">
+    </div>
+    <br>
+</div>
+
+<div class="buttons" mat-dialog-actions>
+    <button mat-raised-button class="primary-button" style="background-color: gray;" mat-dialog-close>Cancelar</button>
+    <button mat-raised-button class="primary-button" style="background-color: black;" mat-dialog-close>{{data.isEdit ? "Actualizar" : "Agregar"}}</button>
+</div>
+

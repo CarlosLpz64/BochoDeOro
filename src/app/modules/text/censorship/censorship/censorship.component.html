@@ -1,0 +1,45 @@
+<div class="main-title">
+    <h1>Censurar contenido de un texto</h1>
+  </div>
+  <br>
+  <br>
+  <h2> Texto a convertir </h2>
+  <mat-form-field class="text-input-large" appearance="fill">
+    <mat-label>Inserte el texto a convertir</mat-label>
+    <textarea id="inputVal" matInput rows="10" [(ngModel)]="value"></textarea>
+  </mat-form-field>
+
+  <div class="center-content">
+    <button 
+    [disabled]="value === ''"
+    mat-raised-button 
+    class="button-med" 
+    (click)="doAction()"
+    > Generar </button>
+  </div>
+
+  <h2> Texto convertido </h2>
+  <mat-form-field class="text-input-large" appearance="fill">
+    <mat-label>Resultado</mat-label>
+    <textarea id="result" matInput rows="10" disabled="true">{{ result }}</textarea>
+  </mat-form-field>
+
+  <div class="center-content">
+    <button 
+    [disabled]="result === ''"
+    mat-raised-button 
+    (click)="confirmCopy()"
+    class="button-med" 
+    [cdkCopyToClipboard]="result"
+    > Copiar resultado</button>
+  </div>
+  <br>
+  <p>¿Consideras que una palabra no debería ser censurada o que falta alguna palabra por censurar?
+    Danos tu opinión en <b>contacto@cprogramadores.com</b>.
+  </p>
+  <br>
+  <div class="center-content" style="flex-direction: column;">
+    <h2> Si te gustó, por favor recomienda este sitio web :D</h2>
+    <mat-icon svgIcon="heart" style="color: red;"></mat-icon>
+    <br>
+  </div>

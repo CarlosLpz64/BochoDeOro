@@ -1,0 +1,18 @@
+@import '../../../../styles.css';
+
+body {
+    background-color: brown;
+}
+mat-icon {
+    color: white;
+}
+
+mat-toolbar {
+    height: 65px;
+    background-color: var(--color-base-4);
+    color: white;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

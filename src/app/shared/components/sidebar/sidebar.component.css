@@ -1,0 +1,79 @@
+@import '../../../../styles.css';
+
+mat-expansion-panel {
+    background: white;
+    box-shadow: none;
+}
+
+mat-icon {
+    margin-right: 5px;
+    color: #37474F;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    cursor: pointer;
+}
+
+.center img {
+    width: 120px;
+    height: 60px;
+    /*filter: brightness(0%);*/
+}
+
+.sidenav-container {
+    /* height: 100%; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+.sidenav-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.sidenav-navegation {
+    margin-top: 15px;
+}
+
+.mat-expansion-panel-header-title {
+    align-items: center;
+    color: #37474F;
+}
+
+a {
+    width: 100%;
+    text-align: start;
+    white-space: unset;
+    line-height: normal;
+    color: #37474F;
+}
+
+.item-sidenav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 10px 0 10px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item-sidenav:hover{
+    background-color: var(--color-base-4);
+}
+.item-sidenav:hover a{
+    color: white;
+}
+.item-sidenav:hover mat-icon{
+    color: white;
+}

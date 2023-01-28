@@ -1,0 +1,235 @@
+/*GENERAL*/
+html,
+body {
+    background-color: #f9db5c !important;
+    min-height: calc(100vh - 70px);
+}
+
+.body-class {
+    background-color: red !important;
+}
+
+body {
+    margin: 0px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #fad25b !important;
+}
+
+p {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 25px !important;
+}
+
+/*VARIABLES*/
+
+/*
+Gold
+--color-red-1: #a46e08;
+--color-red-2: #a87b05;
+--color-red-3: #efb810;
+--color-red-4: #f9db5c;
+--color-red-5: #fad25b;
+
+Aqua
+--color-red-1: #004247;
+--color-red-2: #005a5e;
+--color-red-3: #007477;
+--color-red-4: #008e91;
+--color-red-5: #00c5c6;
+
+*/
+:root {
+    --color-red-1: #a46e08;
+    --color-red-2: #a87b05;
+    --color-red-3: #efb810;
+    --color-red-4: #f9db5c;
+    --color-red-5: #fad25b;
+
+
+    --color-base-1: #f6f6f6;
+    --color-base-2: #fbfde2;
+    --color-base-3: #faffba;
+    --color-base-4: #a2a37a;
+    --text-border-red-1: 1px 1px 0 var(--color-red-1), -1px 1px 0 var(--color-red-1), 1px -1px 0 var(--color-red-1), -1px -1px 0 var(--color-red-1), 0px 1px 0 var(--color-red-1), 0px -1px 0 var(--color-red-1), -1px 0px 0 var(--color-red-1), 1px 0px 0 var(--color-red-1), 2px 2px 0 var(--color-red-1), -2px 2px 0 var(--color-red-1), 2px -2px 0 var(--color-red-1), -2px -2px 0 var(--color-red-1), 0px 2px 0 var(--color-red-1), 0px -2px 0 var(--color-red-1), -2px 0px 0 var(--color-red-1), 2px 0px 0 var(--color-red-1), 1px 2px 0 var(--color-red-1), -1px 2px 0 var(--color-red-1), 1px -2px 0 var(--color-red-1), -1px -2px 0 var(--color-red-1), 2px 1px 0 var(--color-red-1), -2px 1px 0 var(--color-red-1), 2px -1px 0 var(--color-red-1), -2px -1px 0 var(--color-red-1);
+    --text-border-black: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0px 1px 0 #000, 0px -1px 0 #000, -1px 0px 0 #000, 1px 0px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0px 2px 0 #000, 0px -2px 0 #000, -2px 0px 0 #000, 2px 0px 0 #000, 1px 2px 0 #000, -1px 2px 0 #000, 1px -2px 0 #000, -1px -2px 0 #000, 2px 1px 0 #000, -2px 1px 0 #000, 2px -1px 0 #000, -2px -1px 0 #000;
+}
+
+/*CLASSES*/
+.color-red-1 {
+    background-color: var(--color-red-1);
+    color: white;
+}
+
+.color-red-2 {
+    background-color: var(--color-red-2);
+    color: white;
+}
+
+.color-red-3 {
+    background-color: var(--color-red-3);
+    color: white;
+}
+
+.color-red-4 {
+    background-color: var(--color-red-4);
+    color: white;
+}
+
+.color-red-5 {
+    background-color: var(--color-red-5);
+    color: white;
+}
+
+.shell-note {
+    color: rgb(40, 217, 40);
+}
+
+.primary-button {
+    background-color: var(--color-red-5);
+    color: white;
+}
+
+.main-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+
+    background: -webkit-linear-gradient(45deg, var(--color-red-1) 25%, var(--color-red-4) 25%, var(--color-red-4) 50%, var(--color-red-1) 50%, var(--color-red-1) 75%, var(--color-red-4) 75%, var(--color-red-4));
+    background: -moz-linear-gradient(45deg, var(--color-red-1) 25%, var(--color-red-4) 25%, var(--color-red-4) 50%, var(--color-red-1) 50%, var(--color-red-1) 75%, var(--color-red-4) 75%, var(--color-red-4));
+    background: -o-linear-gradient(45deg, var(--color-red-1) 25%, var(--color-red-4) 25%, var(--color-red-4) 50%, var(--color-red-1) 50%, var(--color-red-1) 75%, var(--color-red-4) 75%, var(--color-red-4));
+    background: linear-gradient(45deg, var(--color-red-1) 25%, var(--color-red-4) 25%, var(--color-red-4) 50%, var(--color-red-1) 50%, var(--color-red-1) 75%, var(--color-red-4) 75%, var(--color-red-4));
+    background-size: 200px 200px;
+    animation-name: example;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes example {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: 200px;
+    }
+}
+
+.main-title h1 {
+    margin-top: 10px;
+    color: white;
+    font-size: 3vw;
+    /*50px*/
+    text-shadow: var(--text-border-red-1);
+    text-align: center;
+}
+
+@media screen and (max-width: 601px) {
+    .main-title h1 {
+        font-size: 25px;
+    }
+}
+
+.page-navigator {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.playground {
+    background-color: rgb(241, 239, 239);
+    width: 100%;
+    min-height: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.demostration-container {
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.demo-content {
+    padding: 10px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 450px;
+}
+
+.code-screen {
+    min-height: 50px;
+    width: 100%;
+    background-color: rgb(18, 18, 24);
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 15px;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.text-input-large{
+    width: 100%;
+}
+
+.button-med{
+    width: 50%;
+    background-color: var(--color-red-3);
+    color: white;
+}
+
+/*Posición*/
+
+.x-limit {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.demostration-container {
+    background-color: whitesmoke;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.demo-content {
+    padding: 10px;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+.center-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*ScrollBar*/
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-red-5);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-red-3);
+}

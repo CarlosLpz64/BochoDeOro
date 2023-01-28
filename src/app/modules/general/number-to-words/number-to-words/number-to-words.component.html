@@ -1,0 +1,56 @@
+<div class="main-title">
+    <h1> Convertir número a letras</h1>
+  </div>
+  <br>
+  <h2> Número a convertir </h2>
+
+  <form [formGroup]="myForm">
+    <mat-form-field class="text-input-large" appearance="fill">
+        <mat-label>Inserte el número a convertir</mat-label>
+        <input formControlName="value" type="number" matInput>
+        <mat-error> El valor no debe ser mayor a 9,999,999,999.99 </mat-error>
+      </mat-form-field>
+  </form>
+
+  <div class="center-content">
+    <button 
+    [disabled]="myForm.invalid"
+    mat-raised-button
+    class="button-med" 
+    (click)="doAction()"
+    > Generar </button>
+  </div>
+
+  <h2> Texto convertido </h2>
+  <mat-form-field class="text-input-large" appearance="fill">
+    <mat-label>Resultado</mat-label>
+    <textarea id="result" matInput rows="4" disabled="true">{{ result }}</textarea>
+  </mat-form-field>
+
+  <div class="center-content">
+    <button 
+    [disabled]="result === ''"
+    mat-raised-button 
+    (click)="confirmCopy()"
+    class="button-med" 
+    [cdkCopyToClipboard]="result"
+    > Copiar resultado</button>
+  </div>
+  <br>
+  <div class="center-content" style="flex-direction: column;">
+    <h2> Si te gustó, por favor recomienda este sitio web :D</h2>
+    <mat-icon svgIcon="heart" style="color: red;"></mat-icon>
+    <br>
+  </div>
+  <!-- Anuncio Inferior -->
+<ins
+class="adsbygoogle"
+style="display: block"
+data-ad-client="ca-pub-6064670444327082"
+data-ad-slot="5701673846"
+data-ad-format="auto"
+data-full-width-responsive="true"
+></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
