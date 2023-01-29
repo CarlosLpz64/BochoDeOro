@@ -13,7 +13,6 @@ import { LocalStorageService } from './shared/services/local-storage.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  cookiesAccepted: boolean = false;
   isLogin: boolean = true;
 
   @ViewChild('drawer') sidebar: any;
