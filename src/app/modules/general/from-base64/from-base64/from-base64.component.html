@@ -1,40 +1,28 @@
-<div class="main-title">
-    <h1> Convertir Base64 a Imagen</h1>
-  </div>
-  <br>
-  <div class="center-content">
-    <a routerLink="/generales/imagen/en/base64"> Ir a Convertidor de Imagen a Base64</a>
-  </div>
-  <br>
-  <h2> Texto a convertir </h2>
+<br />
+<div class="center-horizontal"><h1>Vehículos del cliente</h1></div>
+<div class="center-horizontal"><p class="subtitle">Cliente: Lorem Ipsum</p></div>
+<br />
 
-  <mat-form-field class="text-input-large" appearance="fill">
-    <mat-label>Inserte el texto a convertir</mat-label>
-    <textarea id="inputVal" matInput rows="10" [(ngModel)]="value"></textarea>
-  </mat-form-field>
+<mat-divider></mat-divider>
 
-  <h2> Imagen generada </h2>
-
-  <div class="center-content" style="background-color: whitesmoke;">
-    <img style="max-height: 30vh;" [src]="value" *ngIf="value" />
+<div class="car">
+    <img src="/assets/images/modeloa.png" alt="automóvil">
+    <div class="car-description">
+        <p><b>Marca: </b>Lorem Ipsum</p>
+        <p><b>Modelo: </b>Lorem Ipsum</p>
+        <p><b>Descripción: </b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptates consequuntur tempore, voluptatem, recusandae aliquam quae sapiente tempora possimus, animi veniam reprehenderit perspiciatis incidunt iste officia debitis perferendis odio suscipit!</p>
+        <p><b>Estado: </b>No asegurado</p>
+    </div>
 </div>
+<mat-divider></mat-divider>
 
-  <br>
-  <div class="center-content" style="flex-direction: column;">
-    <h2> Si te gustó, por favor recomienda este sitio web :D</h2>
-    <mat-icon svgIcon="heart" style="color: red;"></mat-icon>
-    <br>
-  </div>
-
-  <!-- Anuncio Inferior -->
-<ins
-class="adsbygoogle"
-style="display: block"
-data-ad-client="ca-pub-6064670444327082"
-data-ad-slot="5701673846"
-data-ad-format="auto"
-data-full-width-responsive="true"
-></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<div class="car">
+    <img src="/assets/images/modelob.png" alt="automóvil">
+    <div class="car-description">
+        <p><b>Marca: </b>Lorem Ipsum</p>
+        <p><b>Modelo: </b>Lorem Ipsum</p>
+        <p><b>Descripción: </b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptates consequuntur tempore, voluptatem, recusandae aliquam quae sapiente tempora possimus, animi veniam reprehenderit perspiciatis incidunt iste officia debitis perferendis odio suscipit!/p>
+        <p><b>Estado: </b>No asegurado</p>
+    </div>
+</div>
+<mat-divider></mat-divider>

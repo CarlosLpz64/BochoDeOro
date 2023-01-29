@@ -1,0 +1,81 @@
+<div class="center-horizontal"><h1>{{data.isEdit ? "Actualizar cliente" : "Registrar cliente"}}</h1></div>
+<div class="content-container">
+
+    <div class="input-container">
+        <p>Nombre</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem' : ''" placeholder="Nombre*">
+    </div>
+
+    <div class="input-container">
+        <p>Apellido paterno</p>
+        <input type="text" [value]="data.isEdit ? 'Ipsum' : ''" placeholder="Apellido paterno*">
+    </div>
+
+    <div class="input-container">
+        <p>Apellido materno</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem' : ''" placeholder="Apellido materno">
+    </div>
+
+    <div class="input-container">
+        <p>RFC</p>
+        <input type="text" [value]="data.isEdit ? 'LOREMIPSUM' : ''" placeholder="RFC*">
+    </div>
+
+    <div class="input-container">
+        <p>Teléfono</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem' : ''" placeholder="Teléfono*">
+    </div>
+
+    <div class="input-container">
+        <p>Correo electrónico</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem' : ''" placeholder="Correo electrónico*">
+    </div>
+
+    <div class="input-container">
+        <p>Dirección</p>
+        <textarea type="text" [value]="data.isEdit ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt' : ''" placeholder="Dirección*"></textarea>
+    </div>
+    <div class="input-container">
+        <p>Código postal</p>
+        <input type="text" [value]="data.isEdit ? '12345' : ''" placeholder="Código postal*">
+    </div>
+    <div class="input-container">
+        <p>Número exterior</p>
+        <input type="text" [value]="data.isEdit ? '678' : ''" placeholder="Número exterior*">
+    </div>
+    <div class="input-container">
+        <p>Ciudad</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem Ipsum' : ''" placeholder="Ciudad*">
+    </div>
+    <div class="input-container">
+        <p>Estado</p>
+        <input type="text" [value]="data.isEdit ? 'Ipsum Lorem' : ''" placeholder="Estado*">
+    </div>
+
+    <div class="input-container">
+        <p>Salario Mensual (MXN)</p>
+        <input type="text" [value]="data.isEdit ? '450' : ''" placeholder="Salario Mensual*">
+    </div>
+
+    <div class="input-container">
+        <p>Empresa</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem' : ''" placeholder="Empresa*">
+    </div>
+
+    <div class="input-container">
+        <p>Teléfono empresa</p>
+        <input type="text" [value]="data.isEdit ? '8712345678' : ''" placeholder="Teléfono empresa*">
+    </div>
+
+    <div class="input-container">
+        <p>Estatus Buró de crédito</p>
+        <input type="text" [value]="data.isEdit ? 'Lorem' : ''" placeholder="Estatus Buró de crédito*">
+    </div>
+    <br>
+</div>
+
+<div class="buttons" mat-dialog-actions>
+    <button mat-raised-button class="primary-button" style="background-color: gray;" mat-dialog-close>Cancelar</button>
+    <button mat-raised-button class="primary-button" style="background-color: black;" mat-dialog-close>{{data.isEdit ? "Actualizar" : "Registrar"}}</button>
+</div>
+

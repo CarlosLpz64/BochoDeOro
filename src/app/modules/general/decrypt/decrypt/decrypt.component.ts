@@ -1,40 +1,81 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import * as CryptoJS from 'crypto-js';
-import { Meta, Title } from '@angular/platform-browser';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { ClientModalComponent } from './client-modal/client-modal.component';
+
+export interface PeriodicElement {
+  name: string;
+  location: string;
+  postal: string;
+  rfc: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "lorem@ipsum.com", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'}
+];
 
 @Component({
   selector: 'app-decrypt',
   templateUrl: './decrypt.component.html',
   styleUrls: ['./decrypt.component.css']
 })
-export class DecryptComponent implements OnInit {
+export class DecryptComponent implements AfterViewInit {
 
-  cipherKey: string = ''
-  value: string = "";
-  result: string = "";
+  displayedColumns: string[] = ['name', 'location', 'postal', 'rfc', 'options'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private _snackBar: MatSnackBar, private meta: Meta, private title: Title) {
-    this.title.setTitle('Desencriptar texto online');
-    this.meta.updateTag({ name: 'title', content: 'Desencriptar texto online' });
-    this.meta.updateTag({ name: 'description', content: 'Desencripta un texto utilizando una llave secreta para mantener seguro el contenido.' });
-    this.meta.updateTag({ name: 'keywords', content: 'angular, javascript, typescript, conejos, programadores, herramientas, tools, encriptar, sumar, desencriptar, lifehack, arreglos, listas, cadenas, texto, matemáticas, al azar, generador, convertidor, menu, online, encriptar, desencriptar' });
-   }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog) {}
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  confirmCopy() {
-    this._snackBar.open('¡Texto copiado!', '', {duration: 500});
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  doAction() {
-    this.result = CryptoJS.AES.decrypt(this.value.trim(), this.cipherKey.trim()).toString(CryptoJS.enc.Utf8)
-    if (this.result === '') {
-      this._snackBar.open('Sin resultados. Verifica la llave o mensaje encriptado.', '', {duration: 3000});
-      return
-    }
-    this._snackBar.open('Resultado generado correctamente', '', {duration: 3000});
+  deleteRow() {
+    confirm("Estás seguro que quieres eliminar este registro?")
+  }
+
+  openDialog(status:boolean) {
+    const dialogRef = this.dialog.open(ClientModalComponent, {height:'90vh', width:'50vw', data: {isEdit: status}});
   }
 
 }

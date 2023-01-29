@@ -4,11 +4,6 @@ body {
     background-color: #f9db5c !important;
     min-height: calc(100vh - 70px);
 }
-
-.body-class {
-    background-color: red !important;
-}
-
 body {
     margin: 0px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -208,6 +203,13 @@ Aqua
 .center-content {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-horizontal {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

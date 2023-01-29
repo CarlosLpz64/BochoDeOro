@@ -1,47 +1,74 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import NumberToWords from '../NumberToWords';
-import { Meta, Title } from '@angular/platform-browser';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
+export interface PeriodicElement {
+  name: string;
+  location: string;
+  postal: string;
+  rfc: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'},
+  {name: 'Lorem Ipsum', location: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, similique.", postal: 'Ipsum, Lorem', rfc: 'LOREMIPSUM'}
+];
 @Component({
   selector: 'app-number-to-words',
   templateUrl: './number-to-words.component.html',
   styleUrls: ['./number-to-words.component.css']
 })
-export class NumberToWordsComponent implements OnInit {
+export class NumberToWordsComponent implements AfterViewInit {
 
-  cipherKey: string = ''
-  value: string = "";
-  result: string = "";
-  myForm!: FormGroup;
+  displayedColumns: string[] = ['name', 'location', 'postal'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private _snackBar: MatSnackBar, private meta: Meta, private title: Title, private fb: FormBuilder) {
-    this.title.setTitle('Convertir un número a letras');
-    this.meta.updateTag({ name: 'title', content: 'Convertir un número a letras' });
-    this.meta.updateTag({ name: 'description', content: 'Convierte un número a palabras automáticamente. uno, dos, tres, cuatro, cinco.' });
-    this.meta.updateTag({ name: 'keywords', content: 'angular, javascript, typescript, conejos, programadores, herramientas, tools, encriptar, sumar, desencriptar, lifehack, arreglos, listas, cadenas, texto, matemáticas, al azar, generador, convertidor, menu, online, numeros, palabras' });
-   }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit(): void {
-    this.myForm = this.fb.group({
-      value: ['', [Validators.required, Validators.max(999999999.99), Validators.min(-999999999.99)]],
-    });
+  constructor() {}
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  confirmCopy() {
-    this._snackBar.open('¡Texto copiado!', '', {duration: 500});
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  doAction() {
-    let value = this.myForm.controls['value'].value;
-    let positive = true;
-    if (value < 0) {
-      value = value * -1;
-      positive = false;
-    }
-    this.result = (positive ? "" : "MENOS ") + NumberToWords.NumeroALetras(parseFloat(value), 0)
-    this._snackBar.open('Resultado generado correctamente', '', {duration: 3000});
+  deleteRow() {
+    confirm("Estás seguro que quieres eliminar este registro?")
   }
 
 }
